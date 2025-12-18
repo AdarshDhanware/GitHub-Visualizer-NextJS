@@ -17,7 +17,6 @@ export default function HomePage() {
       <RecruitersSection />
       <InsightsSection />
       <CTASection />
-      <AnalyzerComponent/>
     </div>
   );
 }

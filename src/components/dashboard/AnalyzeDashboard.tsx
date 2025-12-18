@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   PieChart,
   Pie,
@@ -41,12 +41,15 @@ import {
   BookOpen,
   Zap,
 } from "lucide-react";
-import { useParams } from "next/navigation";
 import Link from "next/link";
 
-export default function AnalyzeDashboard() {
-  const params = useParams();
-  const username = params?.username as string;
+
+interface AnalyzeDashboardProps {
+  username: string;
+}
+
+export default function AnalyzeDashboard({ username }: AnalyzeDashboardProps) {
+
 
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);

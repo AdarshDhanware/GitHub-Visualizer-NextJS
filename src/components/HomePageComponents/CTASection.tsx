@@ -20,7 +20,7 @@ export default function CTASection() {
           Start analyzing developer profiles instantly with powerful AI-driven insights.
         </p>
 
-        <Link href='#hero' scroll={true} className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
+        <Link href='#input-username' scroll={true} className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
           Get Started
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </Link>
