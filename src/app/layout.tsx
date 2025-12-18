@@ -8,6 +8,14 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
+import Head from "next/head";
+// export const metadata = {
+//   title: 'GitHub Visualizer',      // Default title
+//   description: 'GitHub Visualizer is a web app that lets you explore and visualize publicly available GitHub profile data, repositories, and contributions through interactive charts and graphs.',
+//   icons: {
+//     icon: '/icon.png',       // Favicon path
+//   },
+// };
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,6 +29,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+
+      <Head>
+        <title>GitHub Visualizer</title>
+        <meta name="description" content="GitHub Visualizer is a web app that lets you explore and visualize publicly available GitHub profile data, repositories, and contributions through interactive charts and graphs." />
+        <link rel="icon" href="/icon.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="GitHub Visualizer" />
+        <meta property="og:description" content="GitHub Visualizer is a web app that lets you explore and visualize publicly available GitHub profile data, repositories, and contributions through interactive charts and graphs." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      
       <body className="font-inter relative min-h-screen overflow-x-hidden antialiased">
         {/* Background layer */}
         <div className="fixed inset-0 z-0 pointer-events-none">
