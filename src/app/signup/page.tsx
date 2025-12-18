@@ -167,6 +167,7 @@ export default function SignupPage() {
 
             <button
               type="submit"
+              disabled={loading}
               className="
             w-full py-2 rounded-md
             bg-white text-black font-medium
