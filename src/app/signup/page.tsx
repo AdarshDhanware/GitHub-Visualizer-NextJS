@@ -5,11 +5,17 @@ import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function SignupPage() {
   const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [quote, setQuote] = useState("Loading your inspiration...");
   const [author, setAuthor] = useState("Loading...");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     const fetchQuote = async () => {
@@ -33,45 +39,57 @@ export default function SignupPage() {
     fetchQuote();
   }, []);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const router = useRouter();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!mounted) return;
+
     setLoading(true);
 
-    const form = e.currentTarget;
-    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
-    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-    const password = (form.elements.namedItem("password") as HTMLInputElement)
-      .value;
-
-    const res = await fetch("/api/auth/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
-    });
-
-    if (!res.ok) {
-      toast.error("User already exists");
-      router.replace("/");
-      setLoading(false);
+    if (!email || !password || !name) {
+      toast.error("All fields are required");
       return;
     }
 
-    toast.success("User registered successfully");
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
 
-    const login = await signIn("credentials", {
-      email,
-      password,
-      callbackUrl: "/",
-    });
+      if (!res.ok) {
+        toast.error("User already exists or registration failed");
+        router.replace("/login");
+        setLoading(false);
+        return;
+      }
 
-    if (!login?.ok) {
-      toast.error("An error occured, try to login");
-      router.replace("/login");
+      toast.success("User registered successfully");
+
+      const login = await signIn("credentials", {
+        email,
+        password,
+        callbackUrl: "/",
+      });
+
+      if (login?.error) {
+        toast.error("An error occured, please try to login manually");
+        router.replace("/login");
+        return;
+      }
+      toast.success("User logged in successfully");
+      router.replace("/");
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
-    toast.success("User logged in successfully");
-    setLoading(false);
-    router.replace("/");
   };
 
   return (
@@ -100,6 +118,8 @@ export default function SignupPage() {
               name="name"
               type="text"
               placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
               className="
             w-full px-4 py-2 rounded-md
@@ -114,6 +134,8 @@ export default function SignupPage() {
               type="email"
               placeholder="Email"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="
             w-full px-4 py-2 rounded-md
             bg-white/20 text-white placeholder-white/60
@@ -122,18 +144,26 @@ export default function SignupPage() {
           "
             />
 
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              required
-              className="
-            w-full px-4 py-2 rounded-md
-            bg-white/20 text-white placeholder-white/60
-            border border-white/30
-            focus:outline-none focus:ring-2 focus:ring-white/40
-          "
-            />
+            <div className="relative">
+              <input
+                name="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                minLength={6}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full px-4 py-2 rounded-md bg-white/20 text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/40"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute inset-y-0 right-3 flex items-center text-white/70 hover:text-white"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
 
             <button
               type="submit"

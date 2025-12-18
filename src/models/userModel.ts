@@ -16,6 +16,7 @@ const UserSchema = new Schema<UserType> (
             type:String,
             default:undefined,
             select:false, // by default it was not selected
+            minLength:[6, "Password must be at least 6 characters"],
         },
         provider:{type:String},
         providerId:{type:String}
