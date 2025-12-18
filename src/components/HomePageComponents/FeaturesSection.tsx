@@ -4,9 +4,9 @@ export default function FeaturesSection() {
   const features = [
     {
       icon: Brain,
-      title: "Automated GitHub analysis",
+      title: "GitHub profile insights",
       description:
-        "Automatically evaluates repositories, commits, languages, and collaboration metrics from GitHub data.",
+        "Collects and analyzes repositories, commits, languages, and collaboration metrics from publicly available GitHub data.",
     },
     {
       icon: Code2,

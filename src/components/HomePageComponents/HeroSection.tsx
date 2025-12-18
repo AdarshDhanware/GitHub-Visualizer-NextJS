@@ -39,20 +39,18 @@ export default function HeroSection() {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-serif text-center mb-8 leading-tight">
-          The more developers you analyze,
+          The more GitHub profiles you review,
           <br />
-          <span className="italic">the better decisions you make</span>
+          <span className="italic">the sharper your insights become</span>
         </h1>
 
         <p className="text-center text-gray-400 max-w-2xl mx-auto mb-12 text-lg leading-relaxed">
-          Transform GitHub profiles into comprehensive developer reports with
-          AI-powered insights. Make hiring decisions in seconds instead of hours
-          with industry-level analytics.
+          Transform publicly available GitHub profiles into detailed developer insights to better understand skills, contributions, and expertise.
         </p>
 
         <div className="flex justify-center gap-6 mb-20">
           <div className="text-center">
-            <div className="text-3xl font-bold mb-1">100+</div>
+            <div className="text-3xl font-bold mb-1">20+</div>
             <div className="text-sm text-gray-500">Data Points</div>
           </div>
           <div className="w-px bg-white/10" />

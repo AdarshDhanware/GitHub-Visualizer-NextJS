@@ -3,8 +3,7 @@
 import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import AnalyticsShowcase from './AnalyticsShowcase';
-import RecruitersSection from './RecruitersSection';
-import InsightsSection from './InsightsSection';
+import DeveloperSection from './DeveloperSection';
 import CTASection from './CTASection';
 
 export default function HomePage() {
@@ -13,8 +12,7 @@ export default function HomePage() {
       <HeroSection />
       <FeaturesSection />
       <AnalyticsShowcase />
-      <RecruitersSection />
-      <InsightsSection />
+      <DeveloperSection />
       <CTASection />
     </div>
   );
