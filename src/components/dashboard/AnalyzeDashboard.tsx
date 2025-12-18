@@ -389,8 +389,8 @@ export default function AnalyzeDashboard({ username }: AnalyzeDashboardProps) {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-zinc-800/95 backdrop-blur-sm border border-zinc-700 rounded-lg p-3 shadow-xl">
-          <p className="text-zinc-300 font-semibold mb-1">{label}</p>
+        <div className="bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 rounded-lg p-3 shadow-xl">
+          <p className="text-white font-semibold mb-1">{label}</p>
           {payload.map((entry: any, index: number) => (
             <p key={index} className="text-sm" style={{ color: entry.color }}>
               {entry.name}: <span className="font-bold">{entry.value}</span>
