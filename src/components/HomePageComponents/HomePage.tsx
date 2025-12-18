@@ -6,7 +6,6 @@ import AnalyticsShowcase from './AnalyticsShowcase';
 import RecruitersSection from './RecruitersSection';
 import InsightsSection from './InsightsSection';
 import CTASection from './CTASection';
-import AnalyzerComponent from '../AnalyzerComponent';
 
 export default function HomePage() {
   return (
