@@ -25,7 +25,7 @@ export default function SignupPage() {
           setQuote(data.data.content);
           setAuthor(data.data.author);
         }
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -75,7 +75,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center px-4">
+    <div className="min-h-screen mt-28 sm:mt-24 w-full flex items-center justify-center px-4">
       {/* Glass Container */}
       <div
         className="

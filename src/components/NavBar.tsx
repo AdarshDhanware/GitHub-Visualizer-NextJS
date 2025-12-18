@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   const { data: session, status } = useSession();
   const [mounted, setMounted] = useState(false);
-  console.log(session);
   useEffect(() => {
     setMounted(true);
   }, []);

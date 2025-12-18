@@ -21,7 +21,7 @@ export default function HeroSection() {
           setQuote(data.data.content);
           setAuthor(data.data.author);
         }
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.error(error);
       }

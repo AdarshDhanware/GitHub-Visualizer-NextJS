@@ -58,10 +58,6 @@ export default function AnalyzeDashboard({ username }: AnalyzeDashboardProps) {
   );
 
   useEffect(() => {
-    console.log("Dashboard mounted for:", username);
-  }, [username]);
-
-  useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -408,7 +404,7 @@ export default function AnalyzeDashboard({ username }: AnalyzeDashboardProps) {
 
   return (
     <div
-      className="min-h-screen mt-10 md:mt-20 bg-zinc-950/10 p-4 md:p-6 lg:p-8"
+      className="min-h-screen mt-20 sm:mt-15 md:mt-20 p-4 md:p-6 lg:p-8"
     >
       <div className="max-w-7xl mx-auto">
         {/* Hero Header */}
