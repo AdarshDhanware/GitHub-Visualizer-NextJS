@@ -8,8 +8,6 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
-import SmoothScroll from "@/components/SmoothScroll";
-
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,7 +21,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-
       <body className="font-inter relative min-h-screen overflow-x-hidden antialiased">
         {/* Background layer */}
         <div className="fixed inset-0 z-0 pointer-events-none">
@@ -49,11 +46,9 @@ export default function RootLayout({
         {/* Content layer */}
         <main className="relative z-20">
           <SessionProvider>
-            <SmoothScroll>
-              <Navbar />
-              {children}
-              <Footer />
-            </SmoothScroll>
+            <Navbar />
+            {children}
+            <Footer />
           </SessionProvider>
         </main>
 
