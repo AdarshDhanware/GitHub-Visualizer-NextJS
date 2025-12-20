@@ -9,6 +9,7 @@ import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
+import SmoothScroll from "@/components/SmoothScroll";
 // export const metadata = {
 //   title: 'GitHub Visualizer',      // Default title
 //   description: 'GitHub Visualizer is a web app that lets you explore and visualize publicly available GitHub profile data, repositories, and contributions through interactive charts and graphs.',
@@ -29,17 +30,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-
       <Head>
         <title>GitHub Visualizer</title>
-        <meta name="description" content="GitHub Visualizer is a web app that lets you explore and visualize publicly available GitHub profile data, repositories, and contributions through interactive charts and graphs." />
+        <meta
+          name="description"
+          content="GitHub Visualizer is a web app that lets you explore and visualize publicly available GitHub profile data, repositories, and contributions through interactive charts and graphs."
+        />
         <link rel="icon" href="/icon.png" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="GitHub Visualizer" />
-        <meta property="og:description" content="GitHub Visualizer is a web app that lets you explore and visualize publicly available GitHub profile data, repositories, and contributions through interactive charts and graphs." />
+        <meta
+          property="og:description"
+          content="GitHub Visualizer is a web app that lets you explore and visualize publicly available GitHub profile data, repositories, and contributions through interactive charts and graphs."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      
+
       <body className="font-inter relative min-h-screen overflow-x-hidden antialiased">
         {/* Background layer */}
         <div className="fixed inset-0 z-0 pointer-events-none">
@@ -65,10 +71,12 @@ export default function RootLayout({
         {/* Content layer */}
         <main className="relative z-20">
           <SessionProvider>
-            <Navbar />
-            {children}
+            <SmoothScroll>
+              <Navbar />
+              {children}
+              <Footer />
+            </SmoothScroll>
           </SessionProvider>
-          <Footer />
         </main>
 
         <Toaster position="top-center" />
